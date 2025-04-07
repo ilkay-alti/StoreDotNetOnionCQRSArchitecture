@@ -20,6 +20,7 @@ namespace StoreOnionArchitecture.Persistence.Context
         public DbSet<Category> Categories { get; set; }
         public DbSet<Detail> Details { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> productCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

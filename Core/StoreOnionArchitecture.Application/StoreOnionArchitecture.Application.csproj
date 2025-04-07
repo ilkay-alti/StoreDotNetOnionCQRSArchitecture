@@ -15,8 +15,4 @@
     <ProjectReference Include="..\StoreOnionArchitecture.Domain\StoreOnionArchitecture.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Products\Command\" />
-  </ItemGroup>
-
 </Project>

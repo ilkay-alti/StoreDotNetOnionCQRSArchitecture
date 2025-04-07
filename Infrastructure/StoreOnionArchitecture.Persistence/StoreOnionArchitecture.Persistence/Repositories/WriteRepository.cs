@@ -11,9 +11,7 @@ using StoreOnionArchitecture.Persistence.Context;
 namespace StoreOnionArchitecture.Persistence.Repositories
 {
     public class WriteRepository<T> : IWriteRepository<T> where T : class, IEntityBase, new()
-
     {
-
         private readonly ApplicationDbContext _dbContext;
 
         public WriteRepository(ApplicationDbContext dbContext)
@@ -23,8 +21,6 @@ namespace StoreOnionArchitecture.Persistence.Repositories
 
         private DbSet<T> Table => _dbContext.Set<T>();
 
-
-
         public async Task AddAsync(T entity)
         {
             await Table.AddAsync(entity);
@@ -32,20 +28,24 @@ namespace StoreOnionArchitecture.Persistence.Repositories
 
         public async Task AddRangeAsync(IList<T> entities)
         {
-        await Table.AddRangeAsync(entities);
+            await Table.AddRangeAsync(entities);
         }
+
         public async Task<T> UpdateAsync(T entity)
         {
-           await Task.Run(() => Table.Update(entity));
+            await Task.Run(() => Table.Update(entity));
             return entity;
         }
+
         public async Task HardDeleteAsync(T entity)
         {
             await Task.Run(() => Table.Remove(entity));
         }
 
-      
+        public async Task HardDeleteRangeAsync(IList<T> entities)
+        {
+            await Task.Run(() => Table.RemoveRange(entities));
+        }
 
-  
     }
 }
