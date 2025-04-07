@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Query;
 using StoreOnionArchitecture.Domain.Common;
 
-namespace StoreOnionArchitecture.Application.Interfaces
+namespace StoreOnionArchitecture.Application.Interfaces.Repositories
 {
     public interface IReadRepository<T> where T : class,IEntityBase,new()
     {

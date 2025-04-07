@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreOnionArchitecture.Persistence.Context;
 
@@ -11,9 +12,11 @@ using StoreOnionArchitecture.Persistence.Context;
 namespace StoreOnionArchitecture.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250407091643_seed")]
+    partial class seed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,9 +59,10 @@ namespace StoreOnionArchitecture.Persistence.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -69,23 +73,26 @@ namespace StoreOnionArchitecture.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 16, 42, 567, DateTimeKind.Local).AddTicks(9889),
                             IsDeleted = false,
-                            Name = "Apple"
+                            Name = "Kids, Electronics & Games",
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 16, 42, 570, DateTimeKind.Local).AddTicks(4800),
                             IsDeleted = false,
-                            Name = "Samsung"
+                            Name = "Electronics, Home & Kids",
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            Name = "Sony"
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 16, 42, 570, DateTimeKind.Local).AddTicks(4854),
+                            IsDeleted = true,
+                            Name = "Shoes & Jewelery",
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -108,8 +115,7 @@ namespace StoreOnionArchitecture.Persistence.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ParentId")
                         .HasColumnType("int");
@@ -117,7 +123,7 @@ namespace StoreOnionArchitecture.Persistence.Migrations
                     b.Property<int>("Priorty")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -128,20 +134,42 @@ namespace StoreOnionArchitecture.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 16, 42, 571, DateTimeKind.Local).AddTicks(5336),
                             IsDeleted = false,
-                            Name = "Elektronik",
+                            Name = "Elektrik",
                             ParentId = 0,
-                            Priorty = 1
+                            Priorty = 1,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 16, 42, 571, DateTimeKind.Local).AddTicks(5354),
+                            IsDeleted = false,
+                            Name = "Moda",
+                            ParentId = 0,
+                            Priorty = 2,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 16, 42, 571, DateTimeKind.Local).AddTicks(5359),
                             IsDeleted = false,
                             Name = "Bilgisayar",
                             ParentId = 1,
-                            Priorty = 2
+                            Priorty = 1,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 16, 42, 571, DateTimeKind.Local).AddTicks(5363),
+                            IsDeleted = false,
+                            Name = "Kadın",
+                            ParentId = 2,
+                            Priorty = 1,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -171,10 +199,9 @@ namespace StoreOnionArchitecture.Persistence.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -187,20 +214,32 @@ namespace StoreOnionArchitecture.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CategoryId = 2,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Bu ürün, yüksek performans sunar.",
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 16, 42, 588, DateTimeKind.Local).AddTicks(6948),
+                            Description = "Gitti ea bilgisayarı velit quis.",
                             IsDeleted = false,
-                            Title = "Gelişmiş"
+                            Title = "Consequatur.",
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
-                            CategoryId = 2,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Taşınabilirlik açısından oldukça uygundur.",
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 16, 42, 588, DateTimeKind.Local).AddTicks(7050),
+                            Description = "İn quam eum quis ex.",
+                            IsDeleted = true,
+                            Title = "Ama layıkıyla.",
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 4,
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 16, 42, 588, DateTimeKind.Local).AddTicks(7130),
+                            Description = "Kutusu sandalye deleniti blanditiis et.",
                             IsDeleted = false,
-                            Title = "Hafif"
+                            Title = "Aliquid.",
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -226,22 +265,19 @@ namespace StoreOnionArchitecture.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Discount")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -255,23 +291,25 @@ namespace StoreOnionArchitecture.Persistence.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Yüksek çözünürlüklü kamera ve hızlı işlemci ile donatılmıştır.",
-                            Discount = 100.00m,
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 16, 42, 591, DateTimeKind.Local).AddTicks(7257),
+                            Description = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+                            Discount = 3.152972498762230m,
                             IsDeleted = false,
-                            Price = 1250.00m,
-                            Title = "Akıllı Telefon"
+                            Price = 51.62m,
+                            Title = "Fantastic Granite Keyboard",
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
-                            BrandId = 2,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Uzun pil ömrü ve yüksek ses kalitesi sunar.",
-                            Discount = 150.00m,
+                            BrandId = 3,
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 16, 42, 591, DateTimeKind.Local).AddTicks(7375),
+                            Description = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+                            Discount = 4.392930860190960m,
                             IsDeleted = false,
-                            Price = 850.00m,
-                            Title = "Kablosuz Kulaklık"
+                            Price = 469.28m,
+                            Title = "Handcrafted Metal Pizza",
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
