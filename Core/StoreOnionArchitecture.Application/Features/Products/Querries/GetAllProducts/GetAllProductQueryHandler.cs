@@ -26,7 +26,7 @@ namespace StoreOnionArchitecture.Application.Features.Products.Querries.GetAllPr
         public async Task<IList<GetAllProductQueryResponse>> Handle(GetAllProductsQueryRequest request, CancellationToken cancellationToken)
         {
 
-            var products = await unitOfWork.GetReadRepository<Product>().GetAllAsync(include:x=>x.Include(b=>b.Brand));
+            var products = await unitOfWork.GetReadRepository<Product>().GetAllAsync(predicate:x=>!x.IsDeleted,include:x=>x.Include(b=>b.Brand));
 
             mapper.Map<BrandDto,Brand>(new Brand());
 
