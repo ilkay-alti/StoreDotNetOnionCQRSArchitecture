@@ -1,13 +1,13 @@
 ﻿using System;
- using System.Collections.Generic;
- using System.Linq;
- using System.Text;
- using System.Threading.Tasks;
- using Newtonsoft.Json;
- 
- namespace StoreOnionArchitecture.Application.Exceptions
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+namespace StoreOnionArchitecture.Application.Exceptions
 {
-    public class ExceptionModel : ErrorStatusCode
+    public class ExceptionModel:ErrorStatusCode
     {
         public IEnumerable<string> Errors { get; set; }
 
@@ -23,4 +23,7 @@
 
         public int StatusCode { get; set; }
     }
+
 }
+
+

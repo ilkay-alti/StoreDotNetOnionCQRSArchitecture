@@ -1,6 +1,5 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
-using System.Net.Http;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using SendGrid.Helpers.Errors.Model;
@@ -28,16 +27,16 @@ namespace StoreOnionArchitecture.Application.Exceptions
             httpContext.Response.StatusCode = statusCode;
 
             List<string> errors = new()
-                 {
-                     exception.Message,
-                     exception.InnerException?.ToString() ?? string.Empty
-                 };
+                {
+                    exception.Message,
+                    exception.InnerException?.ToString() ?? string.Empty
+                };
 
             List<string> nonNullErrors = errors.Where(e => !string.IsNullOrEmpty(e)).ToList();
 
-            var errorResponse = new ExceptionModel
+            var errorResponse = new ExceptionModel 
             {
-                Errors = nonNullErrors,
+                Errors = nonNullErrors, 
                 StatusCode = statusCode
             };
             string jsonResponse = System.Text.Json.JsonSerializer.Serialize(errorResponse);
@@ -54,3 +53,4 @@ namespace StoreOnionArchitecture.Application.Exceptions
             };
     }
 }
+

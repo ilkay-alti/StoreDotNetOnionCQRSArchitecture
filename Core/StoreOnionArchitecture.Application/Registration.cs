@@ -1,4 +1,7 @@
-﻿
+﻿using System;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +19,8 @@ namespace StoreOnionArchitecture.Application
             services.AddTransient<ExceptionsMiddleware>();
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(essembly));
+
+
         }
     }
 }
