@@ -2,6 +2,7 @@ using Scalar.AspNetCore;
 using StoreOnionArchitecture.Persistence;
 using StoreOnionArchitecture.Application;
 using StoreOnionArchitecture.Mapper;
+using StoreOnionArchitecture.Application.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Configure the exception handling middleware
+app.ConfigureExceptionHandlingMiddleware();
 app.UseAuthorization();
 
 app.MapControllers();
