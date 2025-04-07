@@ -10,14 +10,11 @@ namespace StoreOnionArchitecture.Domain.Entities
     public class Brand: EntityBase
     {
         public Brand() { }
-        public Brand(string name, string logo, string description)
+        public Brand(string name)
         {
             Name = name;
-            Logo = logo;
-            Description = description;
         }
-        public required string Name { get; set; }
-        public required string Logo { get; set; }
-        public required string Description { get; set; }
+        public  string Name { get; set; }
+ 
     }
 }

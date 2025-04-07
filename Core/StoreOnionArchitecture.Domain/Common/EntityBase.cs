@@ -8,7 +8,7 @@ namespace StoreOnionArchitecture.Domain.Common
 {
     public class EntityBase:IEntityBase
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public bool IsDeleted { get; set; }
