@@ -1,8 +1,9 @@
 ﻿
-using System.ComponentModel.DataAnnotations;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using SendGrid.Helpers.Errors.Model;
+
 
 namespace StoreOnionArchitecture.Application.Exceptions
 {
@@ -26,6 +27,19 @@ namespace StoreOnionArchitecture.Application.Exceptions
             httpContext.Response.ContentType = "application/json";
             httpContext.Response.StatusCode = statusCode;
 
+            if (exception.GetType() == typeof(ValidationException))
+            {
+                var validationException = (ValidationException)exception;
+
+                return httpContext.Response.WriteAsync(new ExceptionModel
+                {
+                    Errors = ((ValidationException)exception).Errors
+                        .Select(e => e.ErrorMessage),
+
+                    StatusCode = StatusCodes.Status400BadRequest,
+                }.ToString());
+            }
+
             List<string> errors = new()
                 {
                     exception.Message,
@@ -34,9 +48,9 @@ namespace StoreOnionArchitecture.Application.Exceptions
 
             List<string> nonNullErrors = errors.Where(e => !string.IsNullOrEmpty(e)).ToList();
 
-            var errorResponse = new ExceptionModel 
+            var errorResponse = new ExceptionModel
             {
-                Errors = nonNullErrors, 
+                Errors = nonNullErrors,
                 StatusCode = statusCode
             };
             string jsonResponse = System.Text.Json.JsonSerializer.Serialize(errorResponse);

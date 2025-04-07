@@ -7,7 +7,7 @@ using MediatR;
 
 namespace StoreOnionArchitecture.Application.Features.Products.Command.DeleteProduct
 {
-    public class DeleteProductCommandRequest:IRequest
+    public class DeleteProductCommandRequest:IRequest<Unit>
     {
         public int Id { get; set; }
     }
