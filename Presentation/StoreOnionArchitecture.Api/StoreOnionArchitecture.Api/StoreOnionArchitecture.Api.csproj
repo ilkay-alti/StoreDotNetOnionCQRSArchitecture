@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Infrastructure\StoreOnionArchitecture.Persistence\StoreOnionArchitecture.Persistence\StoreOnionArchitecture.Persistence.csproj" />
+    <ProjectReference Include="..\..\..\StoreOnionArchitecture.Mapper\StoreOnionArchitecture.Mapper.csproj" />
   </ItemGroup>
 
 </Project>
