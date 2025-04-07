@@ -1,5 +1,6 @@
 using Scalar.AspNetCore;
 using StoreOnionArchitecture.Persistence;
+using StoreOnionArchitecture.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Configuration
 
 //Add services to the container.
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddAplication();
 
 var app = builder.Build();
 
