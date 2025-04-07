@@ -9,5 +9,6 @@ namespace StoreOnionArchitecture.Application.Features.Products.Querries.GetAllPr
 {
     public class GetAllProductsQueryRequest:IRequest<IList<GetAllProductQueryResponse>>
     {
+
     }
 }

@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreOnionArchitecture.Appl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreOnionArchitecture.Domain", "Core\StoreOnionArchitecture.Domain\StoreOnionArchitecture.Domain.csproj", "{E392D5F1-247D-47C2-A8E1-1C5E278C3B1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreOnionArchitecture.Mapper", "StoreOnionArchitecture.Mapper\StoreOnionArchitecture.Mapper.csproj", "{99B581F3-E0A4-489E-93FD-84F054D05863}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{E392D5F1-247D-47C2-A8E1-1C5E278C3B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E392D5F1-247D-47C2-A8E1-1C5E278C3B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E392D5F1-247D-47C2-A8E1-1C5E278C3B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99B581F3-E0A4-489E-93FD-84F054D05863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99B581F3-E0A4-489E-93FD-84F054D05863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99B581F3-E0A4-489E-93FD-84F054D05863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99B581F3-E0A4-489E-93FD-84F054D05863}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{8EA4EA57-7151-442D-950B-0061A7313ADF} = {04FB650D-0BD7-4BE4-96E2-FC63035C3DC7}
 		{F31B3166-D3C3-45EC-A3A2-BFE4A233B1C4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{E392D5F1-247D-47C2-A8E1-1C5E278C3B1D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{99B581F3-E0A4-489E-93FD-84F054D05863} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {36E47B47-274E-4244-A5F2-98DBDCC5A499}

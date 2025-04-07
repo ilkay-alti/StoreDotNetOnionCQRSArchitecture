@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StoreOnionArchitecture.Application.DTOs;
 
 namespace StoreOnionArchitecture.Application.Features.Products.Querries.GetAllProducts
 {
@@ -12,5 +13,7 @@ namespace StoreOnionArchitecture.Application.Features.Products.Querries.GetAllPr
         public string Description { get; set; }
         public decimal Price{ get; set; }
         public decimal Discount{ get; set; }
+
+        public BrandDto Brand { get; set; }
     }
 }
