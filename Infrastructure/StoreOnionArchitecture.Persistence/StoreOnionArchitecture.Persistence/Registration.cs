@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using StoreOnionArchitecture.Application.Interfaces;
+using StoreOnionArchitecture.Application.Interfaces.Repositories;
+using StoreOnionArchitecture.Application.Interfaces.UnitOfWorks;
 using StoreOnionArchitecture.Persistence.Context;
 using StoreOnionArchitecture.Persistence.Repositories;
+using StoreOnionArchitecture.Persistence.UnitOfWorks;
 
 namespace StoreOnionArchitecture.Persistence
 {
@@ -23,6 +25,8 @@ namespace StoreOnionArchitecture.Persistence
 
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         }
     }

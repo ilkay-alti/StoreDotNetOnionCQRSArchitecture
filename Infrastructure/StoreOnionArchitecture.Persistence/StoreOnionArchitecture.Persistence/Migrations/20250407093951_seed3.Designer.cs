@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreOnionArchitecture.Persistence.Context;
 
@@ -11,9 +12,11 @@ using StoreOnionArchitecture.Persistence.Context;
 namespace StoreOnionArchitecture.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250407093951_seed3")]
+    partial class seed3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +59,8 @@ namespace StoreOnionArchitecture.Persistence.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -69,23 +73,23 @@ namespace StoreOnionArchitecture.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 39, 50, 565, DateTimeKind.Local).AddTicks(3582),
                             IsDeleted = false,
-                            Name = "Apple"
+                            Name = "Outdoors & Outdoors"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 39, 50, 567, DateTimeKind.Local).AddTicks(7879),
                             IsDeleted = false,
-                            Name = "Samsung"
+                            Name = "Garden, Garden & Computers"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            Name = "Sony"
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 39, 50, 567, DateTimeKind.Local).AddTicks(7933),
+                            IsDeleted = true,
+                            Name = "Games & Jewelery"
                         });
                 });
 
@@ -128,18 +132,18 @@ namespace StoreOnionArchitecture.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 39, 50, 570, DateTimeKind.Local).AddTicks(6039),
                             IsDeleted = false,
-                            Name = "Elektronik",
+                            Name = "Jewelery",
                             ParentId = 0,
                             Priorty = 1
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 39, 50, 570, DateTimeKind.Local).AddTicks(6087),
                             IsDeleted = false,
-                            Name = "Bilgisayar",
+                            Name = "Music",
                             ParentId = 1,
                             Priorty = 2
                         });
@@ -188,19 +192,19 @@ namespace StoreOnionArchitecture.Persistence.Migrations
                         {
                             Id = 1,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Bu ürün, yüksek performans sunar.",
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 39, 50, 588, DateTimeKind.Local).AddTicks(6097),
+                            Description = "Mıknatıslı layıkıyla uzattı aut lakin ona modi quae voluptas sevindi.",
                             IsDeleted = false,
-                            Title = "Gelişmiş"
+                            Title = "Intelligent"
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Taşınabilirlik açısından oldukça uygundur.",
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 39, 50, 588, DateTimeKind.Local).AddTicks(6412),
+                            Description = "Yapacakmış sunt consequatur yaptı cezbelendi koşuyorlar.",
                             IsDeleted = false,
-                            Title = "Hafif"
+                            Title = "Ergonomic"
                         });
                 });
 
@@ -226,14 +230,12 @@ namespace StoreOnionArchitecture.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Discount")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
@@ -255,23 +257,23 @@ namespace StoreOnionArchitecture.Persistence.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Yüksek çözünürlüklü kamera ve hızlı işlemci ile donatılmıştır.",
-                            Discount = 100.00m,
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 39, 50, 595, DateTimeKind.Local).AddTicks(4406),
+                            Description = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+                            Discount = 100m,
                             IsDeleted = false,
-                            Price = 1250.00m,
-                            Title = "Akıllı Telefon"
+                            Price = 658.43m,
+                            Title = "Practical Granite Pizza"
                         },
                         new
                         {
                             Id = 2,
                             BrandId = 2,
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Uzun pil ömrü ve yüksek ses kalitesi sunar.",
-                            Discount = 150.00m,
+                            CreatedDate = new DateTime(2025, 4, 7, 2, 39, 50, 595, DateTimeKind.Local).AddTicks(4617),
+                            Description = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+                            Discount = 150m,
                             IsDeleted = false,
-                            Price = 850.00m,
-                            Title = "Kablosuz Kulaklık"
+                            Price = 1039.68m,
+                            Title = "Gorgeous Cotton Soap"
                         });
                 });
 

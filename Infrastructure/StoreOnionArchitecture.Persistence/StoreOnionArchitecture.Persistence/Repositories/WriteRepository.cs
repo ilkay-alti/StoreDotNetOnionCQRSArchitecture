@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using StoreOnionArchitecture.Application.Interfaces;
+using StoreOnionArchitecture.Application.Interfaces.Repositories;
 using StoreOnionArchitecture.Domain.Common;
+using StoreOnionArchitecture.Persistence.Context;
 
 namespace StoreOnionArchitecture.Persistence.Repositories
 {
@@ -13,9 +14,9 @@ namespace StoreOnionArchitecture.Persistence.Repositories
 
     {
 
-        private readonly DbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
-        public WriteRepository(DbContext dbContext)
+        public WriteRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }

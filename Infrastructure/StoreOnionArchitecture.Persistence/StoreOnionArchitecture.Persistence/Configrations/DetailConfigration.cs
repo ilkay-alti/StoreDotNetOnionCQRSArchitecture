@@ -1,5 +1,4 @@
-﻿using Bogus;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using StoreOnionArchitecture.Domain.Entities;
 
@@ -9,37 +8,29 @@ namespace YoutubeApi.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Detail> builder)
         {
-            Faker faker = new("tr");
+            builder.Property(x => x.Title).HasMaxLength(256);
 
-            Detail detail1 = new()
+            var detail1 = new Detail
             {
                 Id = 1,
-                Title = faker.Lorem.Sentence(1),
-                Description = faker.Lorem.Sentence(5),
-                CategoryId = 1,
-                CreatedDate = DateTime.Now,
-                IsDeleted = false,
-            };
-            Detail detail2 = new()
-            {
-                Id = 2,
-                Title = faker.Lorem.Sentence(2),
-                Description = faker.Lorem.Sentence(5),
-                CategoryId = 3,
-                CreatedDate = DateTime.Now,
-                IsDeleted = true,
-            };
-            Detail detail3 = new()
-            {
-                Id = 3,
-                Title = faker.Lorem.Sentence(1),
-                Description = faker.Lorem.Sentence(5),
-                CategoryId = 4,
-                CreatedDate = DateTime.Now,
-                IsDeleted = false,
+                Title = "Gelişmiş",
+                Description = "Bu ürün, yüksek performans sunar.",
+                CategoryId = 2,
+                CreatedDate = new DateTime(2023, 1, 1),
+                IsDeleted = false
             };
 
-            builder.HasData(detail1, detail2, detail3);
+            var detail2 = new Detail
+            {
+                Id = 2,
+                Title = "Hafif",
+                Description = "Taşınabilirlik açısından oldukça uygundur.",
+                CategoryId = 2,
+                CreatedDate = new DateTime(2023, 1, 1),
+                IsDeleted = false
+            };
+
+            builder.HasData(detail1, detail2);
         }
     }
 }

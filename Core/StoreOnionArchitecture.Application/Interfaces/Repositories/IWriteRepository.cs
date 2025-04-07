@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StoreOnionArchitecture.Domain.Common;
 
-namespace StoreOnionArchitecture.Application.Interfaces
+namespace StoreOnionArchitecture.Application.Interfaces.Repositories
 {
     public interface IWriteRepository<T> where T :class ,IEntityBase, new()
     {

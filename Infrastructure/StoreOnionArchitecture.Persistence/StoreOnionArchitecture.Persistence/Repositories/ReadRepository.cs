@@ -7,16 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
-using StoreOnionArchitecture.Application.Interfaces;
+using StoreOnionArchitecture.Application.Interfaces.Repositories;
 using StoreOnionArchitecture.Domain.Common;
+using StoreOnionArchitecture.Persistence.Context;
 
 namespace StoreOnionArchitecture.Persistence.Repositories
 {
     public class ReadRepository<T> : IReadRepository<T> where T : class ,IEntityBase, new()
     {
-        private readonly DbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
-        public ReadRepository(DbContext dbContext)
+        public ReadRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }

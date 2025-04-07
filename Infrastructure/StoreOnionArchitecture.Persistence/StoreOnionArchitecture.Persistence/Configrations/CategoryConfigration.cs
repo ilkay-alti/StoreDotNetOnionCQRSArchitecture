@@ -8,48 +8,29 @@ namespace YoutubeApi.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            Category category1 = new()
+            builder.Property(x => x.Name).HasMaxLength(256);
+
+            var category1 = new Category
             {
                 Id = 1,
-                Name = "Elektrik",
-                Priorty = 1,
                 ParentId = 0,
-                IsDeleted = false,
-                CreatedDate = DateTime.Now,
+                Name = "Elektronik",
+                Priorty = 1,
+                CreatedDate = new DateTime(2023, 1, 1),
+                IsDeleted = false
             };
 
-            Category category2 = new()
+            var category2 = new Category
             {
                 Id = 2,
-                Name = "Moda",
-                Priorty = 2,
-                ParentId = 0,
-                IsDeleted = false,
-                CreatedDate = DateTime.Now,
-            };
-
-            Category parent1 = new()
-            {
-                Id = 3,
-                Name = "Bilgisayar",
-                Priorty = 1,
                 ParentId = 1,
-                IsDeleted = false,
-                CreatedDate = DateTime.Now,
+                Name = "Bilgisayar",
+                Priorty = 2,
+                CreatedDate = new DateTime(2023, 1, 1),
+                IsDeleted = false
             };
 
-            Category parent2 = new()
-            {
-                Id = 4,
-                Name = "Kadın",
-                Priorty = 1,
-                ParentId = 2,
-                IsDeleted = false,
-                CreatedDate = DateTime.Now,
-            };
-
-            builder.HasData(category1, category2, parent1, parent2);
-
+            builder.HasData(category1, category2);
         }
     }
 }
