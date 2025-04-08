@@ -6,6 +6,7 @@ using System.Reflection;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using StoreOnionArchitecture.Application.Bases;
 using StoreOnionArchitecture.Application.Beheviors;
 using StoreOnionArchitecture.Application.Exceptions;
 
@@ -20,6 +21,9 @@ namespace StoreOnionArchitecture.Application
 
             services.AddTransient<ExceptionsMiddleware>();
 
+            services.AddRulesFromAssemblyContaining(essembly,typeof(BaseRules)
+            );
+
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(essembly));
 
             services.AddValidatorsFromAssembly(essembly);
@@ -27,6 +31,23 @@ namespace StoreOnionArchitecture.Application
 
             services.AddTransient(typeof(IPipelineBehavior<,>),typeof(FluentValidationBehevior<,>));
              
+
+        }
+
+        private static IServiceCollection AddRulesFromAssemblyContaining(
+            this IServiceCollection services,
+            Assembly assembly,
+            Type type
+            )
+        {
+            var types = assembly.GetTypes()
+                .Where(t=>t.IsSubclassOf(type) && type !=t).ToList();
+            foreach (var item in types)
+            {
+                services.AddTransient(item);
+
+            }
+            return services;
 
         }
     }
