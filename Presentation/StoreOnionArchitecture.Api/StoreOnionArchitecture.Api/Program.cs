@@ -3,6 +3,7 @@ using StoreOnionArchitecture.Persistence;
 using StoreOnionArchitecture.Application;
 using StoreOnionArchitecture.Mapper;
 using StoreOnionArchitecture.Application.Exceptions;
+using StoreOnionArchitecture.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Configuration
 
 //Add services to the container.
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddInfrastructureRegistration(builder.Configuration);
 builder.Services.AddAplication();
 builder.Services.AddCustomMapper();
 
