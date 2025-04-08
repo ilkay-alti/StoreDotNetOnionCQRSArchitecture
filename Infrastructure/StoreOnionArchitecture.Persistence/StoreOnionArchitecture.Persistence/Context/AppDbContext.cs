@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using StoreOnionArchitecture.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using YoutubeApi.Persistence.Configurations;
 
 namespace StoreOnionArchitecture.Persistence.Context
 {
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext : IdentityDbContext<User,Role,Guid> 
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
