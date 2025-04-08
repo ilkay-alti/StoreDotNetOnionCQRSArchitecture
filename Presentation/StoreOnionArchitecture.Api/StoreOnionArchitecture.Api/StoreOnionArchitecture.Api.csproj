@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Infrastructure\StoreOnionArchitecture.Infrastructure\StoreOnionArchitecture.Infrastructure.csproj" />
     <ProjectReference Include="..\..\..\Infrastructure\StoreOnionArchitecture.Persistence\StoreOnionArchitecture.Persistence\StoreOnionArchitecture.Persistence.csproj" />
     <ProjectReference Include="..\..\..\StoreOnionArchitecture.Mapper\StoreOnionArchitecture.Mapper.csproj" />
   </ItemGroup>
