@@ -43,7 +43,6 @@ namespace StoreOnionArchitecture.Application.Exceptions
             List<string> errors = new()
                 {
                     exception.Message,
-                    exception.InnerException?.ToString() ?? string.Empty
                 };
 
             List<string> nonNullErrors = errors.Where(e => !string.IsNullOrEmpty(e)).ToList();
