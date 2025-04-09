@@ -46,5 +46,18 @@ namespace StoreOnionArchitecture.Api.Controllers
             await mediator.Send(request );
             return Ok();
         }
+
+        [HttpGet()]
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> TestAdmin()
+        {
+            return Ok();
+        }
+        [HttpGet()]
+        [Authorize(Roles = "user")]
+        public async Task<IActionResult> TestUser()
+        {
+            return Ok();
+        }
     }
 }

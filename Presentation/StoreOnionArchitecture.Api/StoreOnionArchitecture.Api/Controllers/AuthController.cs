@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StoreOnionArchitecture.Application.Features.Auth.Command.Login;
+using StoreOnionArchitecture.Application.Features.Auth.Command.RefleshToken;
 using StoreOnionArchitecture.Application.Features.Auth.Command.Register;
 
 namespace StoreOnionArchitecture.Api.Controllers
@@ -27,6 +28,13 @@ namespace StoreOnionArchitecture.Api.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginCommandRequest request)
+        {
+            var response = await _mediator.Send(request);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenCommandRequest request)
         {
             var response = await _mediator.Send(request);
             return Ok(response);

@@ -71,7 +71,7 @@ namespace StoreOnionArchitecture.Infrastructure.Tokens
 
         }
 
-        public ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token)
+        public ClaimsPrincipal? GetPrincipalFromExpiredToken(string? AccessToken)
         {
             TokenValidationParameters tokenValidationParameters = new()
             {
@@ -83,7 +83,7 @@ namespace StoreOnionArchitecture.Infrastructure.Tokens
             };
             JwtSecurityTokenHandler tokenHandler = new();
 
-            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+            var principal = tokenHandler.ValidateToken(AccessToken, tokenValidationParameters, out SecurityToken securityToken);
 
             if(securityToken is not JwtSecurityToken jwtSecurityToken 
                 || !jwtSecurityToken
