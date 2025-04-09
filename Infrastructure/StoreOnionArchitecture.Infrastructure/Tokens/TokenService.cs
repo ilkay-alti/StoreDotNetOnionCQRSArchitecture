@@ -20,13 +20,18 @@ namespace StoreOnionArchitecture.Infrastructure.Tokens
         private readonly TokenSettings _tokenSettings;
         public TokenService(IOptions<TokenSettings> options, UserManager<User> userManager)
         {
-            _tokenSettings = options.Value;
-            _userManager = userManager;
+            _tokenSettings = options.Value ?? throw new ArgumentNullException(nameof(options));
+            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+
+  
         }
 
 
         public async Task<JwtSecurityToken> CreateToken(User user, IList<string> roles)
         {
+
+            
+
             var claims = new List<Claim>()
             {
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()), // JwtId
@@ -45,7 +50,7 @@ namespace StoreOnionArchitecture.Infrastructure.Tokens
                 issuer: _tokenSettings.Issuer,
                 audience: _tokenSettings.Audience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(_tokenSettings.TokenValidityInMinutes),
+                expires: DateTime.UtcNow.AddMinutes(_tokenSettings.TokenValidityInMunitues),
                 signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
             );
 

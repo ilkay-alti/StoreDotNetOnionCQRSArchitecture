@@ -16,5 +16,17 @@ namespace StoreOnionArchitecture.Application.Features.Auth.Rules
             if (user is not null) throw new UserAlreadyExistException(user);
             return Task.CompletedTask;
         }
+
+        public Task EmailOrPasswordShouldBeValid(User? user, bool isPasswordValid)
+        {
+            if (user is null || !isPasswordValid) throw new EmailOrPasswordShouldBeValidException();
+            return Task.CompletedTask;
+        }
+
+        public Task UserNotregistered(User? user)
+        {
+            if (user is null) throw new UserNotregisteredException();
+            return Task.CompletedTask;
+        }
     }
 }
