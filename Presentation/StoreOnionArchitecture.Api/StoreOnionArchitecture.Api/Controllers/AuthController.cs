@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using StoreOnionArchitecture.Application.Features.Auth.Command.Login;
 using StoreOnionArchitecture.Application.Features.Auth.Command.RefleshToken;
 using StoreOnionArchitecture.Application.Features.Auth.Command.Register;
+using StoreOnionArchitecture.Application.Features.Auth.Command.Revoke;
+using StoreOnionArchitecture.Application.Features.Auth.Command.RevokeAll;
 
 namespace StoreOnionArchitecture.Api.Controllers
 {
@@ -38,6 +40,20 @@ namespace StoreOnionArchitecture.Api.Controllers
         {
             var response = await _mediator.Send(request);
             return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Revoke([FromBody] RevokeCommandRequest request)
+        {
+            await _mediator.Send(request);
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RevokeAll()
+        {
+            var response = await _mediator.Send(new RevokeAllCommandRequest());
+            return Ok();
         }
     }
 }
