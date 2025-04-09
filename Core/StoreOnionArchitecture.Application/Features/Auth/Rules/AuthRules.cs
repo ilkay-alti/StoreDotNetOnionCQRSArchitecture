@@ -28,5 +28,15 @@ namespace StoreOnionArchitecture.Application.Features.Auth.Rules
             if (user is null) throw new UserNotregisteredException();
             return Task.CompletedTask;
         }
+
+        public Task RefleshTokenShouldNotBeExpired(DateTime? RefleshTokenExpiryTime)
+        {
+            if(RefleshTokenExpiryTime <= DateTime.UtcNow)
+            {
+                throw new RefleshTokenShouldNotBeException(RefleshTokenExpiryTime);
+            }
+             throw new UserNotregisteredException();
+            
+        }
     }
 }

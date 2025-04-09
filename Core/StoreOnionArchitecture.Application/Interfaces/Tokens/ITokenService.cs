@@ -13,7 +13,7 @@ namespace StoreOnionArchitecture.Application.Interfaces.Tokens
     {
         Task<JwtSecurityToken> CreateToken(User user, IList<string> roles);
         string GenerateRefleshToken();
-        ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token);
+        ClaimsPrincipal? GetPrincipalFromExpiredToken(string? AccessToken);
 
     }
 }
