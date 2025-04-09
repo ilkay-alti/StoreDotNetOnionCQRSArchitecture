@@ -16,7 +16,9 @@ namespace StoreOnionArchitecture.Infrastructure
     {
         public static void AddInfrastructureRegistration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<TokenSettings>(options => configuration.GetSection("JWT"));
+            var _jwtSection = configuration.GetSection("JWT");
+
+            services.Configure<TokenSettings>(_jwtSection);
             services.AddTransient<ITokenService, TokenService>();
 
             services.AddAuthentication(options =>
