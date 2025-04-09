@@ -35,8 +35,14 @@ namespace StoreOnionArchitecture.Application.Features.Auth.Rules
             {
                 throw new RefleshTokenShouldNotBeException(RefleshTokenExpiryTime);
             }
-             throw new UserNotregisteredException();
+            return Task.CompletedTask;
             
+        }
+
+        public Task EmailAdressShouldBeValid(User? user)
+        {
+            if (user is null) throw new EmailAdressShouldBeValidException();
+            return Task.CompletedTask;
         }
     }
 }
