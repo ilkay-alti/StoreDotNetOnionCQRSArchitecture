@@ -40,6 +40,7 @@ namespace StoreOnionArchitecture.Application.Features.Auth.Command.Register
 
             User user = _mapper.Map<User, RegisterCommandRequest>(request);
             user.UserName = request.Email;
+            user.FullName = request.FirstName + " " + request.LastName;
             user.SecurityStamp = Guid.NewGuid().ToString();
 
             IdentityResult result = await _userManager.CreateAsync(user, request.Password);
