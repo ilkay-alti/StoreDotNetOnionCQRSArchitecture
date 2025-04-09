@@ -16,6 +16,9 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 
+//Add HttpContextAccessor
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 // Add Environment Configuration
 var env = builder.Environment;

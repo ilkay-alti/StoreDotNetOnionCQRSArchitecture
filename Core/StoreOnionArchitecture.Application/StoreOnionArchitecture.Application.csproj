@@ -20,4 +20,8 @@
     <ProjectReference Include="..\StoreOnionArchitecture.Domain\StoreOnionArchitecture.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Auth\Querries\" />
+  </ItemGroup>
+
 </Project>
