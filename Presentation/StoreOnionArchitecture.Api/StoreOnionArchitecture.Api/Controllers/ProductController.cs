@@ -14,36 +14,36 @@ namespace StoreOnionArchitecture.Api.Controllers
     [Authorize]
     public class ProductController : ControllerBase
     {
-        private readonly IMediator mediator;
+        private readonly IMediator _mediator;
 
         public ProductController(IMediator mediator)
         {
-            this.mediator = mediator;
+            _mediator = mediator;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllProducts()
         {
-            var response = await mediator.Send(new GetAllProductsQueryRequest());
+            var response = await _mediator.Send(new GetAllProductsQueryRequest());
             return Ok(response);
         }
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductCommandRequest request)
         {
-            await mediator.Send(request );
+            await _mediator.Send(request );
 
             return Ok();
         }
         [HttpPost]
         public async Task<IActionResult> UpdateProduct(UpdateProductCommandRequest request)
         {
-            await mediator.Send(request);
+            await _mediator.Send(request);
             return Ok();
         }
         [HttpDelete]
         public async Task<IActionResult> DeleteProduct(DeleteProductCommandRequest request)
         {
-            await mediator.Send(request );
+            await _mediator.Send(request );
             return Ok();
         }
 
